@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN" data-app="alpha-atlas">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0d1012">
+  <meta name="description" content="Alpha Atlas：按生态浏览项目、加密开发者、关注信号和研究来源。">
+  <title>Alpha Atlas · 私人研究工作台</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='13' fill='%23bcf582'/%3E%3Cpath d='M12 34 22 13h5l10 21h-7l-2-5h-9l-2 5zm9-10h5l-2.5-6z' fill='%230d1012'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">跳至项目内容</a>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="生态导航">
+      <a class="brand" href="./" aria-label="Alpha Atlas 首页"><span class="brand-mark">A<span>·</span></span><span>ALPHA<span class="brand-second">ATLAS</span></span></a>
+      <div class="sidebar-caption">ONCHAIN DISCOVERY</div>
+      <div class="navigation-label">探索生态 <span id="chain-total">—</span></div>
+      <button class="chain-link all-link active" data-chain="all"><span class="all-icon">◈</span><span>全部生态</span><span class="chain-count" id="all-count">—</span></button>
+      <label class="chain-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="chain-search" type="search" placeholder="查找链 / 生态" aria-label="查找链或生态"></label>
+      <nav id="chain-list" class="chain-list" aria-label="链列表"></nav>
+      <div class="sidebar-bottom"><span class="status-dot"></span><span>研究驱动 · 证据优先</span><span class="version">v1.0</span></div>
+    </aside>
+    <div id="sidebar-scrim" class="sidebar-scrim" hidden></div>
+    <div class="workspace">
+      <header class="topbar">
+        <div class="breadcrumb"><button id="menu-button" class="icon-button mobile-menu" aria-label="打开生态导航" aria-expanded="false" aria-controls="sidebar">☰</button><span class="breadcrumb-home">观察站</span><span class="slash">/</span><span id="breadcrumb-chain">全部生态</span></div>
+        <div class="topbar-right"><span class="demo-indicator"><span class="status-dot"></span><span id="data-badge">连接中</span></span><span class="topbar-divider"></span><span class="topbar-note">独立研究，自主判断</span><span class="avatar">α</span></div>
+      </header>
+      <main id="main" tabindex="-1">
+        <div class="page-heading"><div><div class="eyebrow">THE ALPHA OBSERVATORY <span>↗</span></div><h1 id="page-title">项目与开发者</h1><p id="page-description">从关注信号出发，发现值得深入研究的链上项目。</p></div><div class="source-actions"><button id="refresh-button" class="refresh-button" aria-label="立即刷新实时数据" title="立即刷新实时数据">↻</button><label class="source-control"><span>数据来源</span><select id="source-select" aria-label="数据来源"><option value="live">实时监控</option><option value="demo">演示数据</option><option value="snapshot">历史样例快照</option></select></label></div></div>
+        <div class="data-notice" id="data-notice" role="status"><span class="notice-icon">i</span><span>正在连接监控数据库…</span><span class="notice-tag">CONNECTING</span></div>
+        <section class="metrics" aria-label="当前数据概览"><div class="metric"><span class="metric-label">观察项目</span><strong id="project-count">—</strong><span class="metric-foot">PROJECTS</span></div><div class="metric"><span class="metric-label">加密开发者</span><strong id="developer-count">—</strong><span class="metric-foot">BUILDERS</span></div><div class="metric"><span class="metric-label">已归属生态</span><strong id="ecosystem-count">—</strong><span class="metric-foot">ECOSYSTEMS</span></div><div class="metric signal-metric"><span class="metric-label"><span class="tiny-bolt">ϟ</span> 3 分钟共振</span><strong id="signal-count">—</strong><span class="metric-foot">≥ 2 位监控对象关注</span></div></section>
+        <section class="discovery" aria-label="项目与开发者列表">
+          <div class="discovery-toolbar"><div class="view-tabs" role="tablist" aria-label="账号分类"><button class="view-tab active" id="projects-tab" role="tab" aria-selected="true" aria-controls="results" data-kind="project">项目一览 <span id="project-tab-count">—</span></button><button class="view-tab" id="developers-tab" role="tab" aria-selected="false" aria-controls="results" data-kind="crypto_dev" tabindex="-1">加密开发者 <span id="developer-tab-count">—</span></button></div><label class="sort-control"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h11M4 18h6"/></svg><select id="sort-select" aria-label="项目排序"><option value="signal">关注热度</option><option value="followers">粉丝数量</option><option value="name">名称排序</option></select></label></div>
+          <div class="results-meta"><span id="results-summary">正在载入观察列表…</span><label class="signal-filter"><input type="checkbox" id="signal-only"><span class="toggle-track"></span>仅看 3 分钟共振</label></div>
+          <div id="results" role="tabpanel" aria-labelledby="projects-tab" aria-live="polite"></div>
+        </section>
+        <footer class="page-footer"><span>ALPHA ATLAS <span class="footer-dot">/</span> 让每一个判断都有出处</span><span>关注 ≠ 背书 · 研究内容不构成投资建议</span></footer>
+      </main>
+    </div>
+  </div>
+  <dialog id="detail-dialog" aria-labelledby="detail-title"><div id="detail-content"></div></dialog>
+</body>
+</html>

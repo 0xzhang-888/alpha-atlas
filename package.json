@@ -1,0 +1,9 @@
+{
+  "name": "alpha-atlas",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check:web": "node --check showcase/app.js && node alpha-atlas/tests/data-contract.mjs",
+    "export:public": "node scripts/export-public.mjs"
+  }
+}
